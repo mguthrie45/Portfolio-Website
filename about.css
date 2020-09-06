@@ -22,6 +22,7 @@ body {
 	margin-right: auto;
 	background-color: white;
 	color: black;
+  background-color: #e8e8e8;
 }
 
 #home {
@@ -90,60 +91,33 @@ body {
 	text-align: center;
 }
 
-.project_elem {
-	height: 500px;
-	width: 85%;
-	margin-left: auto;
-	margin-right: auto;
+.text_section {
+  display: block;
+  width: 100%;
+  margin-top: 90px;
+  height: 550px;
 }
-.project_title {
-	font-size: 30px;
-	margin-bottom: 5%;
-	padding-bottom: 1%;
+.section_title {
+  font-size: 26px;
+  background-color: white;
+  position: relative;
+  top: -80px;
+  left: 35px;
+  padding: 25px;
+  width: fit-content;
 }
-.link {
-	text-decoration: none;
+.section_content {
+  display: inline-block;
+  margin-top: -45px;
+  padding: 25px;
+  width: 50%;
 }
-.github-button {
-	display: inline-flex;
-	margin-top: 30px;
-	width: 135px;
-	height: 50px;
-	color: white;
-	background-color: rgb(0,0,40);
-	text-align: center;
-	transition: transform 0.3s;
+.section_content p {
+  line-height: 1.4em;
+  float: left;
 }
-.github-button div {
-	margin-top: auto;
-	margin-bottom: auto;
-	font-weight: bold;
-	font-size: 15px;
-}
-
-.github-button:hover {
-	transform: scale(1.12);
-}
-.project_descr {
-	display: inline-block;
-	width: 60%;
-}
-.project_descr p {
-	margin: 0 0 3% 0;
-	line-height: 1.4em;
-}
-.project_image {
-	display: inline-block;
-	width: 35%;
-	float: right;
-}
-.project_image img {
-	width: 100%;
-	transition: transform .3s;
-}
-#enlarge_more:hover {
-	transform: scale(2.2);
-}
-.project_image img:hover {
-	transform: scale(1.5);
+.section_image {
+  display: inline-block;
+  width: 40%;
+  float: right;
 }
