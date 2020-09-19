@@ -85,13 +85,13 @@ body {
 	text-align: center;
 }
 
-.project_elem {
+.club_elem {
 	height: 550px;
 	width: 85%;
 	margin-left: auto;
 	margin-right: auto;
 }
-.project_title {
+.club_title {
 	font-size: 30px;
 	margin-bottom: 5%;
 	padding-bottom: 1%;
@@ -99,7 +99,7 @@ body {
 .link {
 	text-decoration: none;
 }
-.github-button {
+.website-button {
 	display: inline-flex;
 	margin-top: 30px;
 	width: 135px;
@@ -109,36 +109,36 @@ body {
 	text-align: center;
 	transition: transform 0.3s;
 }
-.github-button div {
+.website-button div {
 	margin-top: auto;
 	margin-bottom: auto;
 	font-weight: bold;
 	font-size: 15px;
 }
 
-.github-button:hover {
+.website-button:hover {
 	transform: scale(1.12);
 }
-.project_descr {
+.club_descr {
 	display: inline-block;
 	width: 60%;
 }
-.project_descr p {
+.club_descr p {
 	margin: 0 0 3% 0;
 	line-height: 1.4em;
 }
-.project_image {
+.club_image {
 	display: inline-block;
 	width: 35%;
 	float: right;
 }
-.project_image img {
+.club_image img {
 	width: 100%;
 	transition: transform .3s;
 }
 #enlarge_more:hover {
 	transform: scale(2.2);
 }
-.project_image img:hover {
+.club_image img:hover {
 	transform: scale(1.5);
 }
