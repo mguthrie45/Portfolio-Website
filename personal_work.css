@@ -93,6 +93,7 @@ body {
 }
 .project_title {
 	font-size: 30px;
+	line-height: 1.5em;
 	margin-bottom: 5%;
 	padding-bottom: 1%;
 }

@@ -59,9 +59,9 @@
             <h2 style="line-height: 1.3;" style="font-weight: normal;">Welcome to my portfolio.</h2>
             <p class="main-content">My portolio is a collection of the most notable work and involvement throughout
             my years of studying.</p>
-            <div id="resume_button">
-  						<div style="width:fit-content; margin-left:auto;margin-right:auto;">
-  							<span style="font-weight:normal;">My Resume</span>
+            <div id="resume_button" onclick="expand_close_resume()">
+  						<div style="width:fit-content;margin-left:auto;margin-right:auto;">
+  							<span style="font-weight:normal;">View Resume</span>
   						</div>
   					</div>
           </div>
@@ -71,6 +71,7 @@
             </div>
           </div>
         </div>
+        <iframe id="resume-frame" src="MaxGuthrieResume.pdf"></iframe>
       </div>
     </div>
     <div class="fixed_outer" id="skill-section">
@@ -95,6 +96,7 @@
               <div class="skill-tag"><span>Tensorflow</span></div>
               <div class="skill-tag"><span>UML</span></div>
               <div class="skill-tag"><span>Verilog</span></div>
+              <div class="skill-tag"><span>MIPS Assembly</span></div>
               <div class="skill-tag"><span>Combinational & Sequential Circuit Design</span></div>
             </div>
           </div>
@@ -150,5 +152,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="index.js"></script>
+    <script src="JS\control_resume.js"></script>
   </body>
 </html>
