@@ -84,3 +84,29 @@ body {
 	font-size: 45px;
 	text-align: center;
 }
+
+.course_elem {
+	height: 550px;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.course_title {
+	font-size: 30px;
+  line-height: 1.5em;
+	padding-bottom: 1%;
+}
+.time_taken {
+  font-size: 15px;
+  margin-bottom: 35px;
+  line-height: 1.3em;
+  width: fit-content;
+  border-bottom: 1px solid black;
+}
+.course_descr {
+	display: inline-block;
+}
+.course_descr p {
+	margin: 0 0 3% 0;
+	line-height: 1.4em;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+  <head>
+    <title>Contact Me</title>
+    <link rel="stylesheet" type="text/css" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div id="home">
+			<div id="home_inner">
+				<a href="index.html">
+					<div id="home_button">
+						<div style="width:fit-content; margin-left:auto;margin-right:auto;">
+							<span>Back Home</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+    <form action="form.php" id="contact_form" method="POST" encrypt="text/plain">
+      <div class='top-label'>
+        <label>Name</label>
+        <input class="top" id="name-input" name="name" type="text">
+      </div>
+      <div class='top-label' id='email-input-holder'>
+        <label id="email-label">Email</label>
+        <input class="top" id="email-input" name="_replyto" type="text">
+      </div>
+      <div class='top-label'>
+        <label>Subject</label>
+        <input class="top" id="subject-input" name="subject" type="text">
+      </div>
+      <div class='bottom-label'>
+        <label id="message-label">Message</label>
+        <textarea id="message-input" name="message" rows=10, cols=88></textarea>
+      </div>
+      <input id="submit-input" type="submit" value="Submit">
+    </form>
+    <div id="social-media-footer">
+      <div class='grid-container'>
+        <div class="grid-item">
+          <i class='fa fa-linkedin fa-3x'></i>
+        </div>
+        <div class="grid-item">
+          <i class='fa fa-twitter fa-3x'></i>
+        </div>
+        <div class="grid-item">
+          <i class='fa fa-reddit fa-3x'></i>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
