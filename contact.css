@@ -96,7 +96,7 @@ input, textarea {
 .grid-container {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10%;
   width: 270px;
   top: 50%;
@@ -135,6 +135,11 @@ input, textarea {
   cursor: pointer;
 }
 .fa-reddit {
+  background: rgb(0,0,40);
+  color: white;
+  cursor: pointer;
+}
+.fa-github {
   background: rgb(0,0,40);
   color: white;
   cursor: pointer;
