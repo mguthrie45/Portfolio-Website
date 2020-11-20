@@ -24,7 +24,6 @@ body, html {
 	/*background-color: #2b2b2b;*/
 	background-color: #e8e8e8;
 	color: black;
-	position: static;
 }
 .page_container {
 	width: 75%;
@@ -169,10 +168,7 @@ body, html {
 
 #headshot_holder {
 	width: 100%;
-	height: auto;
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+	min-width: 505px;
 }
 #headshot_holder img {
 	width: 75%;
