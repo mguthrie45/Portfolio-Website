@@ -132,7 +132,7 @@ body, html {
 	padding-bottom: 50px;
 }
 .grid-item {
-  padding: 20px;
+	padding-top: 20px;
   font-size: 30px;
 }
 
