@@ -31,14 +31,15 @@ body, html {
 	margin-left: auto;
 	margin-right: auto;
 	position: static;
-	padding-top: 100px;
+	padding-top: 70px;
 	padding-bottom: 150px;
 }
 
 #welcome-text-cont {
 	display: block;
 	width: 100%;
-	height: 92%;
+	/*height: 92%;*/
+	height: 100%;
 }
 #welcome-text {
 	width: 40%;
@@ -188,7 +189,7 @@ body, html {
 }
 
 #skill-section {
-	background-color: white;
+	background-color: #e8e8e8;
 	color: black;
 }
 .skill-tag-cont {
