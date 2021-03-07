@@ -90,6 +90,7 @@ body {
 	width: 85%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 25px;
 }
 .course_title {
 	font-size: 30px;
@@ -101,7 +102,8 @@ body {
   margin-bottom: 35px;
   line-height: 1.3em;
   width: fit-content;
-  border-bottom: 1px solid black;
+	padding: 3px;
+  border: 1px solid black;
 }
 .course_descr {
 	display: inline-block;

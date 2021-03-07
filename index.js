@@ -4,7 +4,7 @@ res_container = document.getElementById("resume_container")
 function open_res() {
 	resume.style["display"] = "block";
 	resume_cover.style["display"] = "none";
-	res_container.style["height"] = "400px"
+	res_container.style["height"] = "750px"
 }
 
 (function(){
