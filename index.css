@@ -55,9 +55,6 @@ body, html {
 	padding: 20px;
 	border: 3px solid white;
 }
-#welcome-text h1 {
-	font-family: "Lucida Console";
-}
 #interpreter {
 	display: block;
 	margin: auto;
