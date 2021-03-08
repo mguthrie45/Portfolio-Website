@@ -42,8 +42,10 @@ body, html {
 	height: 100%;
 }
 #welcome-text {
-	width: 40%;
-	height: 250px;
+	width: 30%;
+	min-width: 425px;
+	max-width: 475px;
+	height: 400px;
 	position: relative;
 	left: 50%;
 	top: 50%;
@@ -52,6 +54,29 @@ body, html {
 	text-align: center;
 	padding: 20px;
 	border: 3px solid white;
+}
+#welcome-text h1 {
+	font-family: "Lucida Console";
+}
+#interpreter {
+	display: block;
+	margin: auto;
+	width: fit-content;
+	text-align: left;
+	font-family: courier;
+}
+
+.int-cmd {
+	display: block;
+}
+.int-cmd span:nth-child(1) {
+	font-weight: bold;
+}
+.int-cmd span:nth-child(2) {
+	color: hotpink;
+}
+.int-cmd span:nth-child(3) {
+	color: lime;
 }
 
 #header {
