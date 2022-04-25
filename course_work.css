@@ -9,7 +9,7 @@ body {
 }
 
 #fixed_outer {
-	width: 60%;
+	width: 70%;
 	min-width: 800px;
 	margin-left: auto;
 	margin-right: auto;
@@ -61,7 +61,7 @@ body {
 }
 
 #header {
-	width: 60%;
+	width: 70%;
 	min-width: 800px;
 	height: 250px;
 	background-color: rgb(0,0,40);
@@ -77,9 +77,18 @@ body {
 	padding: 10px;
 	padding-left: 25px;
 	padding-right: 25px;
-	border: 3px solid white;
 }
-#header h1 {
+#header div img {
+	width: 65px;
+	height: 65px;
+	display: inline-block;
+	margin-right: 10px;
+	position: relative;
+	bottom: 25%;
+	transform: translate(0, 25%)
+}
+#header div h1 {
+	display: inline-block;
 	font-weight: normal;
 	font-size: 45px;
 	text-align: center;
@@ -111,4 +120,9 @@ body {
 .course_descr p {
 	margin: 0 0 3% 0;
 	line-height: 1.4em;
+}
+.course_descr a {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: block;
 }

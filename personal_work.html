@@ -19,43 +19,76 @@
 		</div>
 		<div id="header">
 			<div>
-				<h1>Personal Projects</h1>
+				<img src="img/edit.png">
+				<h1>Projects</h1>
 			</div>
 		</div>
 		<div id="fixed_outer">
 			<div id="page_container">
+				<div class="project_elem" style="height:800px;">
+					<div class="project_title">
+						<span>Cocktail Browser Web App</span>
+					</div>
+					<div class="project_descr" style="width:100%;">
+						<p>A web application made with React.js that accesses over 700 different cocktail recipes from the CocktailDB API. The user can search cocktails by name and view the recipe. Cocktails recipes can also be filtered based on the ingredients they contain.</p>
+					</div>
+					<div style="display: inline-block; float: right; width:100%;">
+						<img style="width:100%;" src="img\Personal Work\cocktails.png">
+					</div>
+					<a class="link" href="https://github.com/mguthrie45/CocktailDB-Recipe-Browser"><div class="github-button">
+						<div style="width:fit-content; margin-left:auto;margin-right:auto;">
+							<span style="font-weight:normal;">Github</span>
+						</div>
+					</div></a>
+					<div class="project_misc"></div>
+				</div>
+				<div class="project_elem" style="height:350px;">
+					<div class="project_title">
+						<span>US Media Bias API</span>
+					</div>
+					<div class="project_descr" style="width:100%;">
+						<p>An API made with Node.js and express.js that scrapes Google News and sorts news articles by its respective source's political bias. Users can choose to scrape news only of a certain bias along with keyword filters.</p>
+						<a class="link" href="https://github.com/mguthrie45/newbiasapi"><div class="github-button">
+  						<div style="width:fit-content; margin-left:auto;margin-right:auto;">
+  							<span style="font-weight:normal;">Github</span>
+  						</div>
+  					</div></a>
+					</div>
+					<div class="project_misc"></div>
+				</div>
 				<div class="project_elem">
 					<div class="project_title">
-						<span>Stock Sentiment Analyzer</span>
+						<span>Financial News Headline Generator</span>
 					</div>
-					<div class="project_descr">
-						<p>An application made with Tkinter, BeautifulSoup4, and Vader's sentiment analysis tool to scrape web articles relating to specific stocks. Threading was used to conduct sentiment analysis on a time interval basis while the application is running. When the user's watchlist contains a stock that has changed sentiment significantly, the user is notified through the app. The program contains basic analysis tools and the ability to paper trade.</p>
+					<div class="project_descr" style="width:40%;">
+						<p>A natural language model that was trained on over 10,000 financial headlines. The model receives a root string starting the headline and will generate relevant, context-aware text that finishes it.</p>
+						<p>The data was preprocessed into an n-grams model and vectorized. The model used an embedding layer as an input and a recurrent neural network (LSTM). It was built and trained using Keras and Tensorflow.</p>
 						<a class="link" href="https://github.com/mguthrie45/Stock-Sentiment-Analyzer"><div class="github-button">
   						<div style="width:fit-content; margin-left:auto;margin-right:auto;">
   							<span style="font-weight:normal;">Github</span>
   						</div>
   					</div></a>
 					</div>
-					<div class="project_image">
-						<img src="img\Personal Work\StockSentiment.png">
+					<div class="project_image" style="width:55%;">
+						<img src="img\Personal Work\headlines.png">
 					</div>
 					<div class="project_misc"></div>
 				</div>
-				<div class="project_elem">
+				<div class="project_elem" style="height: 1100px;">
 					<div class="project_title">
 						<span>Search Engine from Scratch</span>
 					</div>
-					<div class="project_descr">
-						<p>Built with Python 3, the rudimentary search engine contains three componenets: the sqlite3 database, the main search interface, and the crawling bot. The crawling bots were designed to self-replicate to increase the discovery rate.</p>
+					<div class="project_descr" style="width:100%;">
+						<p>Built with Python 3, the rudimentary search engine contains three componenets: the SQLite3 database, the main search interface, and the crawling bot. The crawling bots were designed to self-replicate to increase the discovery rate.</p>
 						<p>This project allowed me to understand how search engines work more meaningfully.</p>
+						<div style="display: inline-block; float: right; width:100%;">
+							<img style="width:100%;" src="img\Personal Work\searchEngine.png">
+						</div>
 						<a class="link" href="https://github.com/mguthrie45/Search-Engine-Simulation"><div class="github-button">
   						<div style="width:fit-content; margin-left:auto;margin-right:auto;">
   							<span style="font-weight:normal;">Github</span>
   						</div>
   					</div></a>
-					</div>
-					<div class="project_image">
-						<img src="img\Personal Work\SearchEngine.png">
 					</div>
 					<div class="project_misc"></div>
 				</div>
@@ -79,53 +112,19 @@
 				</div>
 				<div class="project_elem" style="height: 600px;">
 					<div class="project_title">
-						<span>Top Down Survival Game</span>
+						<span>Online TCP Checkers</span>
 					</div>
 					<div class="project_descr">
-						<p>A canvas game made from scratch with pure JavaScript. Some would describe this game as belonging to the "bullet hell" genre. The objective is to survive as long as possible, collecting upgrades and shooting enemy objects of varying sizes that bounce around the frame. Boss waves occur periodically to make it more difficult. Once an enemy takes too much health from you, the game is over.</p>
-						<p>Using some basic vector analysis, collision physics between the player and enemy objects were taken into account.</p>
-						<a class="link" href="https://github.com/mguthrie45/Survival-Bullet-Hell"><div class="github-button">
+						<p>A Pygame based checkers game that uses TCP sockets. Using a threaded client-server architecture, two players send and receive game state packets to and from the server.</p>
+						<p>Players can join, leave and reenter without losing a game's progress.</p>
+						<a class="link" href="https://github.com/mguthrie45/Online-Checkers"><div class="github-button">
   						<div style="width:fit-content; margin-left:auto;margin-right:auto;">
   							<span style="font-weight:normal;">Github</span>
   						</div>
   					</div></a>
 					</div>
 					<div class="project_image">
-						<img src="img\Personal Work\game.jpg">
-					</div>
-					<div class="project_misc"></div>
-				</div>
-				<div class="project_elem">
-					<div class="project_title">
-						<span>Neural Network Digit Classifier</span>
-					</div>
-					<div class="project_descr">
-						<p>Tensorflow2 was used to train a sequential neural network using MNIST digit data, which was then applied to a 28x28 PyGame drawing grid that guesses the digit drawn by the user.</p>
-						<a class="link" href="https://github.com/mguthrie45/Digit-Drawing-Classifier"><div class="github-button">
-  						<div style="width:fit-content; margin-left:auto;margin-right:auto;">
-  							<span style="font-weight:normal;">Github</span>
-  						</div>
-  					</div></a>
-					</div>
-					<div class="project_image">
-						<img src="img\Personal Work\classifier.jpg">
-					</div>
-					<div class="project_misc"></div>
-				</div>
-				<div class="project_elem">
-					<div class="project_title">
-						<span>Animated Sudoku Solving Bot</span>
-					</div>
-					<div class="project_descr">
-						<p>A vizualizing tool made with Pygame. A script is used to randomly generate a solvable sudoku board that is fed into a recursive sudoku solving algorithm. The recursive nature allows for convenient backtracking to change previous cells.</p>
-						<a class="link" href="https://github.com/mguthrie45/Sudoku-Solver"><div class="github-button">
-  						<div style="width:fit-content; margin-left:auto;margin-right:auto;">
-  							<span style="font-weight:normal;">Github</span>
-  						</div>
-  					</div></a>
-					</div>
-					<div class="project_image">
-						<img src="img\Personal Work\sudoku.jpg">
+						<img src="img\Personal Work\checkers.png">
 					</div>
 					<div class="project_misc"></div>
 				</div>
