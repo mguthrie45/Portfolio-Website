@@ -1,0 +1,601 @@
+/* Portfolio 2026 - Dark theme, 3-4 colors, minimal */
+:root {
+  --bg: #0c0c0e;
+  --surface: #141418;
+  --surface-elevated: #1c1c22;
+  --accent: #7c7cff;
+  --accent-muted: rgba(124, 124, 255, 0.25);
+  --text: #e4e4e7;
+  --text-muted: #71717a;
+  --border: #27272a;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 10px;
+  --space: 1.25rem;
+  --max-width: 720px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: #a5a5ff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* App layout + galaxy parallax */
+.app {
+  position: relative;
+  min-height: 100vh;
+}
+
+.galaxy-parallax {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.galaxy {
+  position: absolute;
+  inset: -20%;
+  will-change: transform;
+}
+
+.galaxy--base {
+  background: var(--bg);
+  will-change: auto;
+}
+
+@keyframes starOrbit {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(18px, -12px); }
+  50% { transform: translate(-14px, 16px); }
+  75% { transform: translate(-18px, 8px); }
+}
+
+/* White overlay fades in at twinkle peak so stars bias to bright white, color stays underneath */
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.72; }
+}
+
+/* Start white overlays hidden to avoid flash of white before animation runs */
+.galaxy--stars-far-a-white,
+.galaxy--stars-far-b-white,
+.galaxy--stars-mid-a-white,
+.galaxy--stars-mid-b-white,
+.galaxy--stars-near-a-white,
+.galaxy--stars-near-b-white {
+  opacity: 0;
+}
+
+.galaxy--stars-wrap {
+  pointer-events: none;
+}
+
+/* Far layers: slowest orbit; twinkle with staggered delays */
+.galaxy--stars-far-a {
+  background-image:
+    radial-gradient(circle 2px at 20px 30px, rgba(180, 130, 255, 0.95), transparent),
+    radial-gradient(ellipse 6px 1px at 20px 30px, rgba(180, 130, 255, 0.9), transparent),
+    radial-gradient(ellipse 1px 6px at 20px 30px, rgba(180, 130, 255, 0.9), transparent),
+    radial-gradient(circle 1.5px at 80px 120px, rgba(110, 170, 255, 0.95), transparent),
+    radial-gradient(ellipse 4px 0.8px at 80px 120px, rgba(110, 170, 255, 0.9), transparent),
+    radial-gradient(ellipse 0.8px 4px at 80px 120px, rgba(110, 170, 255, 0.9), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  opacity: 0.95;
+  animation: starOrbit 35s linear infinite;
+  animation-delay: 0s;
+}
+
+.galaxy--stars-far-a-white {
+  background-image:
+    radial-gradient(circle 2px at 20px 30px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 6px 1px at 20px 30px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 1px 6px at 20px 30px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(circle 1.5px at 80px 120px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 4px 0.8px at 80px 120px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 0.8px 4px at 80px 120px, rgba(255, 255, 255, 0.88), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  animation: starOrbit 35s linear infinite, starTwinkle 2.6s ease-in-out infinite;
+  animation-delay: 0s, 0s;
+}
+
+.galaxy--stars-far-b {
+  background-image:
+    radial-gradient(circle 2.5px at 160px 40px, rgba(255, 140, 200, 0.9), transparent),
+    radial-gradient(ellipse 7px 1.2px at 160px 40px, rgba(255, 140, 200, 0.85), transparent),
+    radial-gradient(ellipse 1.2px 7px at 160px 40px, rgba(255, 140, 200, 0.85), transparent),
+    radial-gradient(circle 2px at 240px 180px, rgba(200, 140, 255, 0.95), transparent),
+    radial-gradient(ellipse 5px 1px at 240px 180px, rgba(200, 140, 255, 0.9), transparent),
+    radial-gradient(ellipse 1px 5px at 240px 180px, rgba(200, 140, 255, 0.9), transparent),
+    radial-gradient(circle 2px at 320px 90px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(ellipse 5px 1px at 320px 90px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(ellipse 1px 5px at 320px 90px, rgba(255, 255, 255, 0.75), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  opacity: 0.95;
+  animation: starOrbit 35s linear infinite;
+  animation-delay: 0s;
+}
+
+.galaxy--stars-far-b-white {
+  background-image:
+    radial-gradient(circle 2.5px at 160px 40px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 7px 1.2px at 160px 40px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 1.2px 7px at 160px 40px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(circle 2px at 240px 180px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 5px 1px at 240px 180px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 1px 5px at 240px 180px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(circle 2px at 320px 90px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 5px 1px at 320px 90px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(ellipse 1px 5px at 320px 90px, rgba(255, 255, 255, 0.85), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  animation: starOrbit 35s linear infinite, starTwinkle 2.6s ease-in-out infinite;
+  animation-delay: 0s, 1.47s;
+}
+
+/* Mid layers: medium orbit; staggered twinkle */
+.galaxy--stars-mid-a {
+  background-image:
+    radial-gradient(circle 2px at 400px 220px, rgba(130, 190, 255, 0.9), transparent),
+    radial-gradient(ellipse 5px 1px at 400px 220px, rgba(130, 190, 255, 0.85), transparent),
+    radial-gradient(ellipse 1px 5px at 400px 220px, rgba(130, 190, 255, 0.85), transparent),
+    radial-gradient(circle 1.5px at 90px 200px, rgba(255, 160, 220, 0.95), transparent),
+    radial-gradient(ellipse 4px 0.8px at 90px 200px, rgba(255, 160, 220, 0.9), transparent),
+    radial-gradient(ellipse 0.8px 4px at 90px 200px, rgba(255, 160, 220, 0.9), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  opacity: 0.98;
+  animation: starOrbit 22s linear infinite;
+  animation-delay: -8s;
+}
+
+.galaxy--stars-mid-a-white {
+  background-image:
+    radial-gradient(circle 2px at 400px 220px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 5px 1px at 400px 220px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 1px 5px at 400px 220px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(circle 1.5px at 90px 200px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 4px 0.8px at 90px 200px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 0.8px 4px at 90px 200px, rgba(255, 255, 255, 0.88), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  animation: starOrbit 22s linear infinite, starTwinkle 2.6s ease-in-out infinite;
+  animation-delay: -8s, 0.52s;
+}
+
+.galaxy--stars-mid-b {
+  background-image:
+    radial-gradient(circle 2.5px at 280px 50px, rgba(190, 150, 255, 0.9), transparent),
+    radial-gradient(ellipse 7px 1.2px at 280px 50px, rgba(190, 150, 255, 0.85), transparent),
+    radial-gradient(ellipse 1.2px 7px at 280px 50px, rgba(190, 150, 255, 0.85), transparent),
+    radial-gradient(circle 2px at 50px 150px, rgba(255, 170, 230, 0.9), transparent),
+    radial-gradient(ellipse 5px 1px at 50px 150px, rgba(255, 170, 230, 0.85), transparent),
+    radial-gradient(ellipse 1px 5px at 50px 150px, rgba(255, 170, 230, 0.85), transparent),
+    radial-gradient(circle 1.5px at 200px 80px, rgba(150, 180, 255, 0.95), transparent),
+    radial-gradient(ellipse 4px 0.8px at 200px 80px, rgba(150, 180, 255, 0.9), transparent),
+    radial-gradient(ellipse 0.8px 4px at 200px 80px, rgba(150, 180, 255, 0.9), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  opacity: 0.98;
+  animation: starOrbit 22s linear infinite;
+  animation-delay: -8s;
+}
+
+.galaxy--stars-mid-b-white {
+  background-image:
+    radial-gradient(circle 2.5px at 280px 50px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 7px 1.2px at 280px 50px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 1.2px 7px at 280px 50px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(circle 2px at 50px 150px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 5px 1px at 50px 150px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 1px 5px at 50px 150px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(circle 1.5px at 200px 80px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 4px 0.8px at 200px 80px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 0.8px 4px at 200px 80px, rgba(255, 255, 255, 0.88), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  animation: starOrbit 22s linear infinite, starTwinkle 2.6s ease-in-out infinite;
+  animation-delay: -8s, 1.93s;
+}
+
+/* Near layers: fastest orbit; staggered twinkle */
+.galaxy--stars-near-a {
+  background-image:
+    radial-gradient(circle 2px at 350px 200px, rgba(220, 150, 255, 0.9), transparent),
+    radial-gradient(ellipse 5px 1px at 350px 200px, rgba(220, 150, 255, 0.85), transparent),
+    radial-gradient(ellipse 1px 5px at 350px 200px, rgba(220, 150, 255, 0.85), transparent),
+    radial-gradient(circle 2.5px at 120px 250px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(ellipse 6px 1px at 120px 250px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(ellipse 1px 6px at 120px 250px, rgba(255, 255, 255, 0.7), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  opacity: 0.98;
+  animation: starOrbit 12s linear infinite;
+  animation-delay: -4s;
+}
+
+.galaxy--stars-near-a-white {
+  background-image:
+    radial-gradient(circle 2px at 350px 200px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 5px 1px at 350px 200px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 1px 5px at 350px 200px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(circle 2.5px at 120px 250px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 6px 1px at 120px 250px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(ellipse 1px 6px at 120px 250px, rgba(255, 255, 255, 0.85), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  animation: starOrbit 12s linear infinite, starTwinkle 2.6s ease-in-out infinite;
+  animation-delay: -4s, 0.31s;
+}
+
+.galaxy--stars-near-b {
+  background-image:
+    radial-gradient(circle 1.5px at 300px 160px, rgba(255, 150, 210, 0.9), transparent),
+    radial-gradient(ellipse 4px 0.8px at 300px 160px, rgba(255, 150, 210, 0.85), transparent),
+    radial-gradient(ellipse 0.8px 4px at 300px 160px, rgba(255, 150, 210, 0.85), transparent),
+    radial-gradient(circle 2px at 40px 220px, rgba(170, 160, 255, 0.95), transparent),
+    radial-gradient(ellipse 5px 1px at 40px 220px, rgba(170, 160, 255, 0.9), transparent),
+    radial-gradient(ellipse 1px 5px at 40px 220px, rgba(170, 160, 255, 0.9), transparent),
+    radial-gradient(circle 2px at 380px 50px, rgba(140, 200, 255, 0.9), transparent),
+    radial-gradient(ellipse 5px 1px at 380px 50px, rgba(140, 200, 255, 0.85), transparent),
+    radial-gradient(ellipse 1px 5px at 380px 50px, rgba(140, 200, 255, 0.85), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  opacity: 0.98;
+  animation: starOrbit 12s linear infinite;
+  animation-delay: -4s;
+}
+
+.galaxy--stars-near-b-white {
+  background-image:
+    radial-gradient(circle 1.5px at 300px 160px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 4px 0.8px at 300px 160px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 0.8px 4px at 300px 160px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(circle 2px at 40px 220px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 5px 1px at 40px 220px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 1px 5px at 40px 220px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(circle 2px at 380px 50px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(ellipse 5px 1px at 380px 50px, rgba(255, 255, 255, 0.88), transparent),
+    radial-gradient(ellipse 1px 5px at 380px 50px, rgba(255, 255, 255, 0.88), transparent);
+  background-size: 440px 300px;
+  background-repeat: repeat;
+  animation: starOrbit 12s linear infinite, starTwinkle 2.6s ease-in-out infinite;
+  animation-delay: -4s, 2.21s;
+}
+
+.galaxy--nebula {
+  background-repeat: no-repeat;
+  background-position: center;
+  will-change: transform, opacity;
+}
+
+.galaxy--nebula-1 {
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% 20%, rgba(88, 28, 135, 0.38), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 75% 70%, rgba(67, 56, 202, 0.32), transparent 50%),
+    radial-gradient(ellipse 60% 80% at 20% 50%, rgba(124, 58, 237, 0.28), transparent 45%),
+    radial-gradient(ellipse 55% 45% at 60% 35%, rgba(190, 80, 180, 0.2), transparent 45%);
+}
+
+.galaxy--nebula-2 {
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% -10%, var(--accent-muted), transparent 50%),
+    radial-gradient(ellipse 50% 50% at 85% 60%, rgba(124, 124, 255, 0.15), transparent 45%),
+    radial-gradient(ellipse 45% 45% at 15% 75%, rgba(200, 120, 220, 0.12), transparent 45%);
+}
+
+.app__content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: calc(var(--space) * 3) var(--space);
+}
+
+/* Section spacing */
+.section {
+  margin-bottom: calc(var(--space) * 3);
+}
+.section__title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: var(--space);
+}
+
+/* Introduction */
+.introduction__layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  align-items: flex-start;
+}
+.introduction__image-wrap {
+  flex-shrink: 0;
+}
+.introduction__headshot {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+@media (min-width: 480px) {
+  .introduction__headshot {
+    width: 160px;
+    height: 160px;
+  }
+}
+.introduction__name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+.introduction__bio {
+  margin: 0;
+  color: var(--text);
+  max-width: 56ch;
+}
+
+/* Collapsible */
+.collapsible {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.collapsible__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space);
+  padding: var(--space) calc(var(--space) * 1.25);
+  font: inherit;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+.collapsible__trigger:hover {
+  background: var(--surface-elevated);
+}
+.collapsible__title {
+  font-weight: 600;
+}
+.collapsible__icon {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+.collapsible__content {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  padding: calc(var(--space) * 1.25);
+}
+
+/* Work experience */
+.work-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.work-item {
+  padding-bottom: calc(var(--space) * 1.5);
+}
+.work-item:last-child {
+  padding-bottom: 0;
+}
+.work-item__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.25rem;
+}
+.work-item__role {
+  font-weight: 600;
+  color: var(--text);
+}
+.work-item__company {
+  color: var(--accent);
+  font-weight: 500;
+}
+.work-item__period {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+.work-item__stack {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+.work-item__bullets {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--text);
+}
+.work-item__bullets li {
+  margin-bottom: 0.35rem;
+}
+.work-item__bullets li:last-child {
+  margin-bottom: 0;
+}
+
+/* Education */
+.education-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.education-item {
+  padding: calc(var(--space) * 1.25);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.education-item__school {
+  font-weight: 600;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.education-item__degree {
+  margin: 0 0 0.25rem;
+  color: var(--text);
+}
+.education-item__minor {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+.education-item__gpa {
+  margin: 0;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+/* Projects */
+.project-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.project-card {
+  padding: calc(var(--space) * 1.25);
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: var(--space);
+}
+.project-card:last-child {
+  margin-bottom: 0;
+}
+.project-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space);
+  margin-bottom: 0.5rem;
+}
+.project-card__name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.project-card__wip {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: 0.15rem 0.4rem;
+  background: var(--surface);
+  border-radius: 4px;
+}
+.project-card__tagline {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+.project-card__link {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  padding: 0.35rem;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.project-card__link:hover {
+  color: var(--accent);
+  background: var(--accent-muted);
+}
+.project-card__tech {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+.project-card__desc {
+  margin: 0 0 0.5rem;
+  color: var(--text);
+}
+.project-card__features {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.project-card__features li {
+  margin-bottom: 0.25rem;
+}
+
+/* External links */
+.external-links {
+  padding-bottom: calc(var(--space) * 4);
+}
+.link-row {
+  display: flex;
+  gap: var(--space);
+  flex-wrap: wrap;
+}
+.link-row__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.link-row__item:hover {
+  color: var(--accent);
+  border-color: var(--accent-muted);
+  background: var(--accent-muted);
+}
