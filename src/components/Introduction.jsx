@@ -20,7 +20,7 @@ export default function Introduction() {
         <div className="introduction__text">
           <h1 className="introduction__name">Max Guthrie</h1>
           <p className="introduction__bio">
-            I'm a software engineer with a B.Sc. in Computer Science from Pennsylvania State University and experience building full-stack and data systems at scale. I'm passionate about building scalable and resilient systems that serve customers reliably. I'm customer-focused and results-focused, and I learn quickly—whether it's OpenTelemetry and distributed tracing, serverless APIs, or data lake workflows. I enjoy owning features end-to-end and improving observability and performance for production systems.
+            Software engineer with a B.Sc. in Computer Science from Pennsylvania State University and experience building systems that serve users at scale. I care about scalable, resilient systems and making sure they deliver for customers. I learn quickly, enjoy owning work end-to-end, and aim to raise the bar on quality and performance. Driven to deliver impact and to keep improving.
           </p>
         </div>
       </div>

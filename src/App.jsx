@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import GalaxyParallax from './components/GalaxyParallax';
 import Introduction from './components/Introduction';
 import Education from './components/Education';
+import Certifications from './components/Certifications';
 import WorkExperience from './components/WorkExperience';
 import Projects from './components/Projects';
 import ExternalLinks from './components/ExternalLinks';
@@ -27,6 +28,7 @@ export default function App() {
       <div className="app__content">
         <Introduction />
         <Education />
+        <Certifications />
         <WorkExperience />
         <Projects />
         <ExternalLinks />

@@ -1,34 +1,40 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, ChevronDown } from 'lucide-react';
 import CollapsibleSection from './CollapsibleSection';
+import CollapsibleContent from './CollapsibleContent';
+import P2PPlayerDiagram from './P2PPlayerDiagram';
 
 const PROJECTS = [
   {
     name: 'Triple P Disposal',
-    tagline: 'Serverless dumpster rental app',
+    tagline: 'Dumpster rental application for Triple P Disposal',
     tech: 'React, TypeScript, Go, AWS (CDK, Lambda, Postgres)',
     url: 'https://www.triplepdisposalapp.com',
     urlLabel: 'Website',
     icon: ExternalLink,
-    description: 'Full-stack cloud-deployed application using CDK for infrastructure, Golang for APIs, and React/TypeScript for the frontend. Built with a friend. My work included API and data integrations on the frontend and backend API development. Provides order management, scheduling, invoicing, and real-time status updates for customers, drivers, and admins.',
+    overview: 'Full-stack, cloud-deployed application enabling end-to-end dumpster rental operations for Triple P Services. Built with CDK for infrastructure, Go for APIs, and React/TypeScript for the frontend.',
+    featuresLabel: 'Capabilities',
+    features: [
+      'Customer self-service: schedule rentals, dropoffs, and pickups; receive API-generated invoices.',
+      'Operational scheduling: automated pickup and dropoff schedules for drivers and field employees.',
+      'Admin portal: modify schedules, manage orders, and oversee operations.',
+    ],
   },
   {
     name: 'Stock Backtesting Engine',
-    tagline: 'Configurable backtester for trading strategies',
+    tagline: 'Configurable backtesting framework for trading strategies',
     tech: 'Python, JavaScript',
     url: 'https://github.com/mguthrie45/py-backtester/tree/main',
     urlLabel: 'GitHub',
     icon: Github,
-    description: 'A highly configurable backtesting tool built with Python.',
+    overview: 'A highly configurable backtesting engine for evaluating trading strategies against historical and live data. Strategy logic and metrics are defined declaratively and extended via Python.',
+    featuresLabel: 'Features',
     features: [
-      'Tests and trading strategies defined by YAML configs',
-      'External Python scripts can define conditions for trading strategies',
-      'Custom metrics (RSI, moving averages, Bollinger bands, etc.) in configs with external Python scripts',
-      'Adapts to multiple datasources (Yahoo Finance API, CSV datasets)',
-      'Workflow handles larger-than-memory datasets via paginated generators',
-      'Event observer records trading activity to assemble JSON reports',
-      'JSON reports include ROI, Calmar ratio, Sharpe ratio, Sortino ratio, win rate, max drawdown',
+      'Declarative configuration: tests and strategies defined in YAML; conditions and custom logic via external Python scripts.',
+      'Extensible metrics: custom indicators (e.g. RSI, moving averages, Bollinger bands) configurable with optional Python extensions.',
+      'Multi-source data: supports multiple datasources including Yahoo Finance and CSV; paginated, generator-based workflow for larger-than-memory datasets.',
+      'Structured output: event observer records trading activity and produces JSON reports with ROI, Calmar ratio, Sharpe ratio, Sortino ratio, win rate, and max drawdown.',
     ],
   },
   {
@@ -39,11 +45,22 @@ const PROJECTS = [
     urlLabel: null,
     icon: null,
     wip: true,
-    description: 'An HLS video player that uses peer-to-peer video segment sharing to reduce CDN calls. Peers join swarms and exchange segments via WebRTC data channels. Swarms are managed and WebRTC handshakes facilitated by a WebSocket signaling server (Golang, high concurrency with goroutines). HLS is used as fallback when P2P is unavailable; this required reimplementing HLS using the Fetch API.',
+    overview: 'HLS video player that uses peer-to-peer segment sharing to reduce CDN load. Viewers join swarms and exchange segments over WebRTC data channels, with a custom signaling server coordinating sessions.',
+    featuresLabel: 'Architecture',
+    features: [
+      'P2P layer: swarms and segment exchange via WebRTC data channels; WebSocket signaling server (Golang) for discovery and handshakes, scaled with goroutines for high concurrency.',
+      'Playback: HLS reimplemented with the Fetch API and used as fallback when P2P is unavailable, keeping playback uninterrupted.',
+    ],
   },
 ];
 
+function projectSlug(name) {
+  return name.split(' ').join('-');
+}
+
 export default function Projects() {
+  const [expandedId, setExpandedId] = useState(null);
+
   return (
     <motion.section
       className="section"
@@ -52,39 +69,81 @@ export default function Projects() {
       <h2 className="section__title">Projects</h2>
       <CollapsibleSection title="Selected projects" defaultOpen={true}>
         <ul className="project-list">
-          {PROJECTS.map((proj, i) => (
-            <li key={proj.name} className="project-card">
-              <div className="project-card__header">
-                <div>
-                  <h3 className="project-card__name">
-                    {proj.name}
-                    {proj.wip && <span className="project-card__wip">WIP</span>}
-                  </h3>
-                  <p className="project-card__tagline">{proj.tagline}</p>
-                </div>
-                {proj.url && proj.icon && (
-                  <a
-                    href={proj.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-card__link"
-                    aria-label={proj.urlLabel}
-                  >
-                    <proj.icon size={18} strokeWidth={2} />
-                  </a>
-                )}
-              </div>
-              <p className="project-card__tech">{proj.tech}</p>
-              <p className="project-card__desc">{proj.description}</p>
-              {proj.features && (
-                <ul className="project-card__features">
-                  {proj.features.map((f, j) => (
-                    <li key={j}>{f}</li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
+          {PROJECTS.map((proj) => {
+            const isExpanded = expandedId === proj.name;
+            return (
+              <li key={proj.name} className="project-card project-card--expandable">
+                <button
+                  type="button"
+                  className="project-card__trigger"
+                  onClick={() => setExpandedId(isExpanded ? null : proj.name)}
+                  aria-expanded={isExpanded}
+                  aria-controls={`project-details-${projectSlug(proj.name)}`}
+                >
+                  <div className="project-card__header">
+                    <div>
+                      <h3 className="project-card__name">
+                        {proj.name}
+                        {proj.wip && <span className="project-card__wip">WIP</span>}
+                      </h3>
+                      <p className="project-card__tagline">{proj.tagline}</p>
+                    </div>
+                    <div className="project-card__trigger-right">
+                      {proj.url && proj.icon && (
+                        <a
+                          href={proj.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-card__link"
+                          aria-label={proj.urlLabel}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <proj.icon size={18} strokeWidth={2} />
+                        </a>
+                      )}
+                      <motion.span
+                        className="project-card__chevron"
+                        animate={{ rotate: isExpanded ? 180 : 0 }}
+                        transition={{ duration: 0.25 }}
+                      >
+                        <ChevronDown size={20} strokeWidth={2} />
+                      </motion.span>
+                    </div>
+                  </div>
+                  <p className="project-card__tech">{proj.tech}</p>
+                </button>
+                <AnimatePresence initial={false}>
+                  {isExpanded && (
+                    <CollapsibleContent
+                      id={`project-details-${projectSlug(proj.name)}`}
+                      className="project-card__expandable"
+                    >
+                      <div className="project-card__body">
+                        {(proj.overview || proj.description) && (
+                          <p className="project-card__desc">{proj.overview || proj.description}</p>
+                        )}
+                        {proj.features && proj.features.length > 0 && (
+                          <>
+                            {proj.featuresLabel && (
+                              <h4 className="project-card__features-title">{proj.featuresLabel}</h4>
+                            )}
+                            <ul className="project-card__features">
+                              {proj.features.map((f, j) => (
+                                <li key={j}>{f}</li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
+                        <div className="project-card__extra" aria-label="Additional project details">
+                          {proj.name === 'Peer-to-peer HLS Player' && <P2PPlayerDiagram />}
+                        </div>
+                      </div>
+                    </CollapsibleContent>
+                  )}
+                </AnimatePresence>
+              </li>
+            );
+          })}
         </ul>
       </CollapsibleSection>
     </motion.section>
